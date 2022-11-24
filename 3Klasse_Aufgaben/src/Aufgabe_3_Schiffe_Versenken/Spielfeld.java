@@ -11,7 +11,6 @@ public class Spielfeld {
 
 	public static void main(String[] args) {
 		basisFeld();
-		showFeld();
 
 		// Schiff 10
 		int lengthIndex = 9;
@@ -142,6 +141,7 @@ public class Spielfeld {
 				Spielfeld[ship1.getPosX()][ship1.getPosY() + i] = ship1.getIndex();
 			}
 		}
+		showFeld();
 	}
 
 	private static void testShip(int lengthIndex) {
