@@ -1,14 +1,13 @@
 package Aufgabe_2;
 
-import java.util.Iterator;
-
 public class Playground {
 	private Card[][] cards; //(0,0) links oben
 	private int whosOnTurn; //0..Spieler 1, 1...Spieler2, ...
 	private int[] score; //Die Anzahl der Paerchen pro Spieler
 	private int nrJoker;
 	private int nrPairs;
-s
+
+
 	/**
 	 * @param x Groesse in x-Richtung
 	 * @param y Groesse in y-Richtung
@@ -58,9 +57,9 @@ s
 	/**
 	 * @return Die Karte die aufgedeckt wurde
 	 */
-	public Card play()
+	public Card play(int x, int y)
 	{
-		return null;
+		return cards[x][y];
 		
 	}
 	
@@ -70,7 +69,22 @@ s
 	 */
 	public boolean finished()
 	{
-		return false;
+		int p = 0; //Gesamtzahl der aufgedeckten Paare
+		for (int s : this.score)
+		{
+			p += s;
+		}
+		return nrPairs == p;
+	}
+	
+	public void nextPlayer()
+	{
+		whosOnTurn = (whosOnTurn + 1) % score.length;
+	}
+	
+	public int getPlayer()
+	{
+		return whosOnTurn;
 	}
 	
 	@Override
@@ -83,5 +97,31 @@ s
 			s += "\n";
 		}
 		return s;
+	}
+	
+	public void ausgabe()
+	{
+		System.out.printf("%3s", "");
+		for (int i = 0; i < cards[0].length; i++) {
+			System.out.printf("%2d", i);
+		}
+		System.out.println();
+		for (int i = 0; i < cards.length; i++) {
+			System.out.printf("%d : ", i);
+			for (int j = 0; j < cards[i].length; j++) 
+			{
+				Card c = cards[i][j];
+				if (c.visible)
+				{
+					c.ausgabe();
+				} else
+				{
+					System.out.print("*");
+				}
+				System.out.print("|");
+			}
+			
+			System.out.println();
+		}
 	}
 }
