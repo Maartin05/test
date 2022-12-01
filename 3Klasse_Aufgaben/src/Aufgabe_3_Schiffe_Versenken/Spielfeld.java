@@ -12,9 +12,11 @@ public class Spielfeld {
 	public static void main(String[] args) {
 		basisFeld();
 
-		// Schiff 10
+		// ship nummber 10
+		// testing if ship is ok
 		int lengthIndex = 9;
 		testShip(lengthIndex);
+		// crating ship
 		Schiffe ship10 = new Schiffe(posX, posY, dir, length[lengthIndex], length[lengthIndex]);
 
 		for (int i = 0; i < ship10.getLength(); i++) {
@@ -25,9 +27,11 @@ public class Spielfeld {
 			}
 		}
 
-		// Schiff 9
+		// ship nummber 9
+		// testing if ship is ok
 		int lengthIndex1 = 8;
 		testShip(lengthIndex1);
+		// crating ship
 		Schiffe ship9 = new Schiffe(posX, posY, dir, length[lengthIndex1], length[lengthIndex1]);
 
 		for (int i = 0; i < ship9.getLength(); i++) {
@@ -38,9 +42,11 @@ public class Spielfeld {
 			}
 		}
 
-		// Schiff 8
+		// ship nummber 8
+		// testing if ship is ok
 		int lengthIndex2 = 7;
 		testShip(lengthIndex2);
+		// crating ship
 		Schiffe ship8 = new Schiffe(posX, posY, dir, length[lengthIndex2], length[lengthIndex2]);
 
 		for (int i = 0; i < ship8.getLength(); i++) {
@@ -51,9 +57,11 @@ public class Spielfeld {
 			}
 		}
 
-		// Schiff 7
+		// ship nummber 7
+		// testing if ship is ok
 		int lengthIndex3 = 6;
 		testShip(lengthIndex3);
+		// crating ship
 		Schiffe ship7 = new Schiffe(posX, posY, dir, length[lengthIndex3], length[lengthIndex3]);
 
 		for (int i = 0; i < ship7.getLength(); i++) {
@@ -64,9 +72,11 @@ public class Spielfeld {
 			}
 		}
 
-		// Schiff 6
+		// ship nummber 6
+		// testing if ship is ok
 		int lengthIndex4 = 5;
 		testShip(lengthIndex4);
+		// crating ship
 		Schiffe ship6 = new Schiffe(posX, posY, dir, length[lengthIndex4], length[lengthIndex4]);
 
 		for (int i = 0; i < ship6.getLength(); i++) {
@@ -77,9 +87,11 @@ public class Spielfeld {
 			}
 		}
 
-		// Schiff 5
+		// ship nummber 5
+		// testing if ship is ok
 		int lengthIndex5 = 4;
 		testShip(lengthIndex5);
+		// crating ship
 		Schiffe ship5 = new Schiffe(posX, posY, dir, length[lengthIndex5], length[lengthIndex5]);
 
 		for (int i = 0; i < ship5.getLength(); i++) {
@@ -90,9 +102,11 @@ public class Spielfeld {
 			}
 		}
 
-		// Schiff 4
+		// ship nummber 4
+		// testing if ship is ok
 		int lengthIndex6 = 3;
 		testShip(lengthIndex6);
+		// crating ship
 		Schiffe ship4 = new Schiffe(posX, posY, dir, length[lengthIndex6], length[lengthIndex6]);
 
 		for (int i = 0; i < ship4.getLength(); i++) {
@@ -103,10 +117,12 @@ public class Spielfeld {
 			}
 		}
 
-		// Schiff 3
+		// ship nummber 3
+		// testing if ship is ok
 		int lengthIndex7 = 2;
 		testShip(lengthIndex7);
-		Schiffe ship3 = new Schiffe(posX, posY, dir, length[lengthIndex3], length[lengthIndex3]);
+		// crating ship
+		Schiffe ship3 = new Schiffe(posX, posY, dir, length[lengthIndex7], length[lengthIndex7]);
 
 		for (int i = 0; i < ship3.getLength(); i++) {
 			if (ship3.isDir()) {
@@ -116,9 +132,11 @@ public class Spielfeld {
 			}
 		}
 
-		// Schiff 2
+		// ship nummber 2
+		// testing if ship is ok
 		int lengthIndex8 = 1;
 		testShip(lengthIndex8);
+		// crating ship
 		Schiffe ship2 = new Schiffe(posX, posY, dir, length[lengthIndex8], length[lengthIndex8]);
 
 		for (int i = 0; i < ship2.getLength(); i++) {
@@ -129,9 +147,11 @@ public class Spielfeld {
 			}
 		}
 
-		// Schiff 1
+		// ship nummber 1
+		// testing if ship is ok
 		int lengthIndex9 = 0;
 		testShip(lengthIndex9);
+		// crating ship
 		Schiffe ship1 = new Schiffe(posX, posY, dir, length[lengthIndex9], length[lengthIndex9]);
 
 		for (int i = 0; i < ship1.getLength(); i++) {
@@ -147,9 +167,11 @@ public class Spielfeld {
 	private static void testShip(int lengthIndex) {
 		boolean passtSchiff = true;
 		while (passtSchiff) {
-			schiffErstellen();
+			Schiffferstellen();
+
+			// test if ship is inbounds
 			while ((posY > length[lengthIndex] && !dir) || (posX > length[lengthIndex] && dir)) {
-				schiffErstellen();
+				Schiffferstellen();
 			}
 
 			// test if ship overlaps
@@ -170,10 +192,41 @@ public class Spielfeld {
 					}
 				}
 			}
+
+			// test if ship is isolated
+//			for (int i = 0; i < length[lengthIndex] + 2; i++) {
+//				if (dir) {
+//					try {
+//						if (Spielfeld[posX + i][posY] == 0 && Spielfeld[posX + i][posY + 1] == 0
+//								&& Spielfeld[posX + i][posY - 1] == 0) {
+//							passtSchiff = false;
+//							throw new IndexOutOfBoundsException();
+//						} else {
+//							passtSchiff = true;
+//							break;
+//						}
+//					} catch (Exception e) {
+//						passtSchiff = false;
+//					}
+//				} else {
+//					try {
+//						if (Spielfeld[posX][posY + i] == 0 && Spielfeld[posX + 1][posY + i] == 0
+//								&& Spielfeld[posX - 1][posY + i] == 0) {
+//							passtSchiff = false;
+//							throw new IndexOutOfBoundsException();
+//						} else {
+//							passtSchiff = true;
+//							break;
+//						}
+//					} catch (Exception e) {
+//						passtSchiff = false;
+//					}
+//				}
+//			}
 		}
 	}
 
-	private static void schiffErstellen() {
+	private static void Schiffferstellen() {
 		posX = (int) (Math.random() * 10);
 		posY = (int) (Math.random() * 10);
 		dirInt = (int) (Math.random() * 3);
