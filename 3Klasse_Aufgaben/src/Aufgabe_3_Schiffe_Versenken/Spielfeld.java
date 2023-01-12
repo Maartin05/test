@@ -1,17 +1,10 @@
 package Aufgabe_3_Schiffe_Versenken;
 
 public class Spielfeld {
-	static private int[][] Spielfeld;
-
-	final static int[] length = { 2, 2, 2, 2, 3, 3, 3, 4, 4, 5 };
-	static boolean dir;
-	static int dirInt;
-	static int posX;
-	static int posY;
-
-	public static void main(String[] args) {
+	public int[][] Spielfeld;
+	
+	public void init() {
 		basisFeld();
-
 		// ship nummber 10
 		// testing if ship is ok
 		int lengthIndex = 9;
@@ -161,10 +154,22 @@ public class Spielfeld {
 				Spielfeld[ship1.getPosX()][ship1.getPosY() + i] = ship1.getIndex();
 			}
 		}
-		showFeld();
 	}
 
-	private static void testShip(int lengthIndex) {
+	final static int[] length = { 2, 2, 2, 2, 3, 3, 3, 4, 4, 5 };
+	static boolean dir;
+	static int dirInt;
+	static int posX;
+	static int posY;
+
+	
+	public static void main(String[] args) {
+		Spielfeld s = new Spielfeld();
+		s.init();
+		s.showFeld();
+	}
+
+	private  void testShip(int lengthIndex) {
 		boolean passtSchiff = true;
 		while (passtSchiff) {
 			Schiffferstellen();
@@ -192,41 +197,10 @@ public class Spielfeld {
 					}
 				}
 			}
-
-			// test if ship is isolated
-//			for (int i = 0; i < length[lengthIndex] + 2; i++) {
-//				if (dir) {
-//					try {
-//						if (Spielfeld[posX + i][posY] == 0 && Spielfeld[posX + i][posY + 1] == 0
-//								&& Spielfeld[posX + i][posY - 1] == 0) {
-//							passtSchiff = false;
-//							throw new IndexOutOfBoundsException();
-//						} else {
-//							passtSchiff = true;
-//							break;
-//						}
-//					} catch (Exception e) {
-//						passtSchiff = false;
-//					}
-//				} else {
-//					try {
-//						if (Spielfeld[posX][posY + i] == 0 && Spielfeld[posX + 1][posY + i] == 0
-//								&& Spielfeld[posX - 1][posY + i] == 0) {
-//							passtSchiff = false;
-//							throw new IndexOutOfBoundsException();
-//						} else {
-//							passtSchiff = true;
-//							break;
-//						}
-//					} catch (Exception e) {
-//						passtSchiff = false;
-//					}
-//				}
-//			}
 		}
 	}
 
-	private static void Schiffferstellen() {
+	private  void Schiffferstellen() {
 		posX = (int) (Math.random() * 10);
 		posY = (int) (Math.random() * 10);
 		dirInt = (int) (Math.random() * 3);
@@ -237,7 +211,7 @@ public class Spielfeld {
 		}
 	}
 
-	private static void showFeld() {
+	private  void showFeld() {
 		for (int i = 0; i < Spielfeld.length; i++) {
 			for (int j = 0; j < Spielfeld[i].length; j++) {
 				System.out.printf(" %d", Spielfeld[i][j]);
@@ -246,7 +220,7 @@ public class Spielfeld {
 		}
 	}
 
-	private static void basisFeld() {
+	private  void basisFeld() {
 		Spielfeld = new int[10][10];
 		for (int i = 0; i < Spielfeld.length; i++) {
 			for (int j = 0; j < Spielfeld[i].length; j++) {
