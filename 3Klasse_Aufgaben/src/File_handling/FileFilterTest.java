@@ -34,7 +34,7 @@ public class FileFilterTest {
 			long lastModified = contents[i].lastModified();
 			Date date = new Date(lastModified);
   
-			String[] p =contents[i].getName().split(".");
+			String[] p =contents[i].getName().split("\\.");
 			String extension = "";
 			if (p.length > 1)
 			{
@@ -56,9 +56,3 @@ public class FileFilterTest {
 		System.out.println();
 	}
 }
-	
-	
-	
-
-
-
